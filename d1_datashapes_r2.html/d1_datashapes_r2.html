@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-02-03 Mon 14:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo: Data shapes</title>
+<meta name="author" content="DATA 306" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Demo: Data shapes</h1>
+<div id="outline-container-org7c5a97e" class="outline-2">
+<h2 id="org7c5a97e"><span class="section-number-2">1.</span> Data comes in many forms</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Structured datasets do not always come arranged in rows and columns, the format R is best at reading and processing. But most forms of structured data can be "reshaped" into rows and columns. In this tutorial, you will learn more about the non-rectangular data format known as JSON, how to reshape JSON data, and how to read and write data. 
+</p>
+
+<p>
+First, we will load some of the packages we need for this tutorial:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">#  run these first if you need to install the packages
+#  install.packages("tidyjson")
+#  install.packages("haven")
+#  install.packages("tidyverse") # this one is bigger
+
+  library(tidyjson) # for working with JSON data
+  library(haven)    # for working with proprietary data formats
+                                 # (like Excel, SPSS, or Stata)
+  library(tidyverse) # a swiss army knife for data analysis
+</pre>
+</div>
+
+<p>
+Packages usually include example datasets. <code>tidyjson</code> has JSON data, one of which is called "worldbank" (world bank funded projects).
+</p>
+
+<p>
+First, we should take a look at the <code>str</code>-ucture of the data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"># help(worldbank) # sometimes packages come with their own tutorials
+str(worldbank)
+</pre>
+</div>
+
+<p>
+Computer science people would call this a "500 length character vector." If you know what you're looking at, you might notice right away that the characters are probably in JSON format.
+</p>
+
+<p>
+We can think of it more generally as an <b>object</b> consisting of 500 different units. Each unit happens to be encoded as collections of letters and numbers (characters). These collections happen to be structured in the JSON standard format.
+</p>
+
+<p>
+What is "standard JSON format"? Let's look at the first unit of the object:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">worldbank[1]
+</pre>
+</div>
+
+<p>
+Can you figure out how to look at the 250th unit? The 131st?
+</p>
+
+<p>
+Not very nice to look at. A "human readable" display of JSON data looks more the following code chunk. Note that this code chunk is NOT WRITTEN IN R CODE. It is just here to help you understand how JSON is normally displayed. Do not attempt to copy/paste this into your R console or script &#x2014; it will cause problems.
+</p>
+
+<pre class="example" id="org4ae1122">
+{\"_id\":{\"$oid\":\"52b213b38594d8a2be17c780\"},
+    \"boardapprovaldate\":\"2013-11-12T00:00:00Z\",
+    \"closingdate\":\"2018-07-07T00:00:00Z\",
+    \"countryshortname\":\"Ethiopia\",
+    \"majorsector_percent\":[{\"Name\":\"Education\",\"Percent\":46},
+                             {\"Name\":\"Education\",\"Percent\":26},
+                             {\"Name\":\"Public Administration, Law, and Justice\",\"Percent\":16},
+                             {\"Name\":\"Education\",\"Percent\":12}],
+    \"project_name\":\"Ethiopia General Education Quality Improvement Project II\",
+    \"regionname\":\"Africa\",
+    \"totalamt\":130000000}
+</pre>
+
+<p>
+This entry has eight separate labels, each for different types of data. <code>majorsector_percent</code> is a label for another set of labels that name each sector's percentage of world bank funds. This is called <b>nesting</b>. JSON is great for nested data.
+</p>
+
+<p>
+JSON is <i>required knowledge for data analysts</i>. But we won't discuss it beyond this demo. Have more questions? That's what Coffee and Code sessions are for. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge8ba0ab" class="outline-2">
+<h2 id="orge8ba0ab"><span class="section-number-2">2.</span> From JSON to table</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Usually we think of data in the form of tables, or (if you prefer) in "spreadsheets," a concept from accounting. What would the JSON entry for Ethiopia look like as a table? This is where the <code>jsontidy</code> package comes in handy!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">wb_table_ethiopia &lt;- spread_all(worldbank[1]) # notice the &lt;-
+wb_df_ethiopia &lt;- as.data.frame(wb_table_ethiopia)
+                                     ## &lt;- means define everything to the right under
+                                     ## the object name to the left.
+wb_df_ethiopia # invoking the object name returns the contents of the object
+</pre>
+</div>
+
+<p>
+I assure you, this is a table. The nested variable is the reason it doesn't look very tidy. So let's just ignore columns with nested data for now.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">wb_df_ethiopia[2:7] # now we are "subsetting" columns 2 through 7 of the table
+</pre>
+</div>
+
+<p>
+Now we are beginning to see how JSON translates into "tabular" form. Let's do the same thing but for the first 10 countries in the <code>worldbank</code> data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">wb_table &lt;- spread_all(worldbank[1:10])
+wb_df &lt;- as.data.frame(wb_table)
+wb_df[2:7]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgedff57a" class="outline-2">
+<h2 id="orgedff57a"><span class="section-number-2">3.</span> Export and import data in R</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org29244b0" class="outline-3">
+<h3 id="org29244b0">Export</h3>
+<div class="outline-text-3" id="text-org29244b0">
+<p>
+We can export this table as a <code>.csv</code> file using the built-in function <code>write.csv()</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-R">write.csv(wb_df[2:7], "worldbank_selection.csv")
+</pre>
+</div>
+
+<p>
+Running the block above exports columns 2 through 7 to a file named <code>worldbank_selection.csv</code>. The file will be in your default working directory. Figure out what that is by writing the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">getwd()
+</pre>
+</div>
+
+<p>
+Navigate to the directory given by the <code>getwd()</code> function in your file manager, then open up the <code>worldbank_selection.csv</code> file in your plain text editor. As will be obvious when you see it, <code>.csv</code> stands for <code>comma</code> <code>separated</code> <code>value</code>. Once you have seen the raw data in text form, open up the file in a spreadsheet application such as Numbers (on a Mac), Excel, or Google Sheets.
+</p>
+
+<p>
+<code>project_name</code> is the only column that uses an underscore. Delete the underscore so the column name reads <code>projectname</code>. Then save the file as <code>worldbank_selection_mod.csv</code> in a folder called "data" within your DATA 306 folder (make one if you don't have one yet). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org778d747" class="outline-3">
+<h3 id="org778d747">File paths and the working directory</h3>
+<div class="outline-text-3" id="text-org778d747">
+<p>
+We can read the data back into R by using the built-in <code>read.csv()</code> function. But first, we need to tell R where to look for the file with the <code>setwd()</code> function. This function requires a <i>file path</i> as an argument.
+</p>
+
+<p>
+A file path is a nested list of folders leading to a given file. An example was given above in the output to <code>getwd()</code>. You see file paths everyday in the form of web addresses. The webpage for the Data Analytics program is <a href="https://qcsociology.commons.gc.cuny.edu/data-analytics-applied-social-research/">https://qcsociology.commons.gc.cuny.edu/data-analytics-applied-social-research/</a>. This just means "data-analytics-applied-social-research" is a sub-directory (folder) within the parent directory "qcsociology.commons.gc.cuny.edu". 
+</p>
+
+<p>
+Usually, your "Desktop" directory is within what is called the "home" directory. The home directory is important, so programmers abbreviate this path to "~", the tilde key. So to write a file path to your desktop, on a Mac you can use something like "~/Desktop/". If you created a DATA 306 folder on your desktop, then the path to this directory should be something like "~/Desktop/DATA306/". In Windows, the tilde key takes you all the way to the desktop, so you can just write "~/DATA306".
+</p>
+
+<p>
+So, we can tell R to consider a folder called DATA306 as its "working directory." The working directory is where R looks for any imports (like data) and where it puts any exports (like data, plots, workspaces, or other outputs). 
+</p>
+
+<p>
+We can set the working directory like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">setwd("~/Desktop/DATA306")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80a5b7d" class="outline-3">
+<h3 id="org80a5b7d">Importing data</h3>
+<div class="outline-text-3" id="text-org80a5b7d">
+<p>
+Assuming everything is configured as described above, importing the data should be straightforward with the <code>read.csv()</code> function.
+</p>
+
+<p>
+Note that we use a file path <i>from the working directory</i> to tell R that the csv file is in the "data" folder. We add this because we want to segregate our <i>outputs</i> (modified data, plots, etc.) from our <i>inputs</i> (the original data).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mydata &lt;- read.csv("data/worldbank_selection_mod.csv") # read the data
+str(mydata) # look at the data
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: DATA 306</p>
+<p class="date">Created: 2025-02-03 Mon 14:22</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -78,3 +78,10 @@ We can speak of at least two cultures within statistics and data science, and we
 
 - **Stochastic**: 20th c. statistics
 - **Algorithmic**: "machine learning"
+
+# 9/29
+Mainly working on **D2_Distributions_r1** in class, didn't finish it tho
+![alt text](image-2.png)
+
+# 10/6
+

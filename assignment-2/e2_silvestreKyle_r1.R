@@ -10,7 +10,7 @@ library(tidyjson)
 library(haven)
 library(tidyverse)
 
-setwd("C:/Workspace/DATA-306")
+setwd("C:/Workspace/DATA-306")	
 getwd()
 
 school <- read.csv("./data/NYCschools_r1.csv")
